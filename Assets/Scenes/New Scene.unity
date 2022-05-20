@@ -154,7 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjectPrefabs:
   - {fileID: 2196422648079668139, guid: 025bd88ad49469345bcaf3b18b3aebce, type: 3}
+  - {fileID: 8660490024495152391, guid: 0e801ff22e404f14bae232c69e078f97, type: 3}
   PlayerGameObject: {fileID: 3166781086649743865, guid: 71b0ad3da3ea4bf41a343244cad662a9, type: 3}
+  timestep: 1
 --- !u!4 &976594077
 Transform:
   m_ObjectHideFlags: 0

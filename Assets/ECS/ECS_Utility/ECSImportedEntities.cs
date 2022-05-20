@@ -9,15 +9,26 @@ using Unity.Mathematics;
 
 public class ECSImportedEntities : MonoBehaviour
 {
+
+    public static ECSImportedEntities instance;
+
     private EntityManager _manager;
     private BlobAssetStore _blobAssetStore;
     private GameObjectConversionSettings _settings;
     
     public GameObject[] gameObjectPrefabs;
-    private Entity[] entityPrefabs;
+    public Entity[] entityPrefabs;
     public GameObject PlayerGameObject;
     private static Entity BasePlayerEntity;
     private static Entity PlayerEntity;
+
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(this);
+        }
+    }
 
     void Start()
     {
@@ -35,7 +46,7 @@ public class ECSImportedEntities : MonoBehaviour
         //Player object
         BasePlayerEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(PlayerGameObject, _settings);
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             Entity enemy = RequestEntity(0);
             _manager.SetComponentData(enemy, new Translation{
                 Value = new float3(UnityEngine.Random.Range(-10f, 10f),UnityEngine.Random.Range(-10f, 10f),UnityEngine.Random.Range(-10f, 10f))
